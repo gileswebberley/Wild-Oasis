@@ -1,25 +1,3 @@
-// import { useEffect } from 'react';
-// import { useUser } from '../features/authentication/useUser';
-// import { useIndexedDB } from '../hooks/useIndexedDB';
-// import { iDB } from '../utils/shared_constants';
-// import toast from 'react-hot-toast';
-// import { useNavigate } from 'react-router-dom';
-// import Spinner from '../ui/Spinner';
-// import SlideInY from '../ui/SlideInY';
-// import CabinSketchHeading from '../ui/CabinSketchHeading';
-// import { useCabin } from '../features/cabins/useCabin';
-// import styled from 'styled-components';
-// import GuestContainer from '../ui/GuestContainer';
-// import GuestSubContainer from '../ui/GuestSubContainer';
-// import { bp_sizes } from '../styles/breakpoints';
-// import { format } from 'date-fns';
-// import ButtonGroup from '../ui/ButtonGroup';
-// import Button from '../ui/Button';
-// import { formatCurrency } from '../utils/helpers';
-// import { useCreateBooking } from '../features/bookings/useCreateBooking';
-// import { useLogout } from '../features/authentication/useLogout';
-// import GuestTitleArea from '../ui/GuestTitleArea';
-
 import styled from 'styled-components';
 import GuestContainer from '../../ui/GuestContainer';
 import GuestSubContainer from '../../ui/GuestSubContainer';
@@ -156,13 +134,13 @@ function BookingConfirmation() {
     //Just have to think about what to do at this point - perhaps delete the local db, log the user out (because the database booking is created when logging in so causes a lot of problems with the deletion), and navigate to the home page?
     createBookingMutate(booking, {
       onSuccess: () => {
-        logout(false, {
-          onSuccess: () => {
-            deleteDatabase(iDB.name).then(() =>
-              navigate('../', { replace: true })
-            );
-          },
-        });
+        // logout(false, {
+        //   onSuccess: () => {
+        //     deleteDatabase(iDB.name).then(() =>
+        //       navigate('../', { replace: true })
+        //     );
+        //   },
+        // });
       },
     });
   }
