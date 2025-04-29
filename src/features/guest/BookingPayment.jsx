@@ -34,46 +34,16 @@ const DetailsSection = styled(GuestSubContainer)`
   justify-content: center;
 `;
 
-const DetailsRow = styled.section`
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 1rem;
-  border-top: 1px solid var(--color-grey-400);
-
-  &:first-child {
-    border-top: none;
-  }
-  /* because we have a last row with the button group we use this to select the last DetailsRow */
-  &:nth-last-child(-n + 2) {
-    border-bottom: 1px solid var(--color-grey-400);
-  }
-
-  &:nth-last-child(-n + 1) {
-    padding-top: 3rem;
-  }
-
-  @media (${bp_sizes.sm}) {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-`;
-
-const DetailsLabel = styled.span`
-  font-weight: 600;
-  min-width: fit-content;
-`;
-
 function BookingPayment() {
   const { isCheckingUser, user, isAuthenticated, isAnonymous } = useUser();
   const { isLoading: isLoadingCabin, cabin } = useCabin();
   const { isDBBusy, data, getCurrentData, deleteDatabase } = useIndexedDB(
     iDB.name
   );
-  const { createBookingMutate, isCreatingBooking } = useCreateBooking();
+  // const { createBookingMutate, isCreatingBooking } = useCreateBooking();
 
   const navigate = useNavigate();
-  const { logout } = useLogout();
+  // const { logout } = useLogout();
 
   //if not authenticated user redirect
   useEffect(() => {
@@ -92,59 +62,45 @@ function BookingPayment() {
     }
   }, [data, getCurrentData, isDBBusy]);
 
-  const {
-    startDate,
-    endDate,
-    cabinId,
-    guestID,
-    numNights,
-    numGuests,
-    cabinPrice,
-    extrasPrice,
-    totalPrice,
-    status,
-    hasBreakfast,
-    isPaid,
-    observations,
-  } = data ?? {};
+  const { totalPrice, bookingId } = data ?? {};
 
   const { fullName } = user?.user_metadata ?? {};
 
   if (isCheckingUser || isLoadingCabin || !data) return <Spinner />;
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    toast.success(`DEMO VERSION (Booking added to DB)
-        In production you would be sent an email and taken to a checkout page...`);
-    const booking = {
-      startDate,
-      endDate,
-      numNights,
-      numGuests,
-      cabinPrice,
-      extrasPrice,
-      totalPrice,
-      status,
-      hasBreakfast,
-      isPaid,
-      observations,
-      cabinID: cabinId,
-      guestID,
-    };
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   toast.success(`DEMO VERSION (Booking added to DB)
+  //       In production you would be sent an email and taken to a checkout page...`);
+  //   const booking = {
+  //     startDate,
+  //     endDate,
+  //     numNights,
+  //     numGuests,
+  //     cabinPrice,
+  //     extrasPrice,
+  //     totalPrice,
+  //     status,
+  //     hasBreakfast,
+  //     isPaid,
+  //     observations,
+  //     cabinID: cabinId,
+  //     guestID,
+  //   };
 
-    //Just have to think about what to do at this point - perhaps delete the local db, log the user out (because the database booking is created when logging in so causes a lot of problems with the deletion), and navigate to the home page?
-    createBookingMutate(booking, {
-      onSuccess: () => {
-        // logout(false, {
-        //   onSuccess: () => {
-        //     deleteDatabase(iDB.name).then(() =>
-        //       navigate('../', { replace: true })
-        //     );
-        //   },
-        // });
-      },
-    });
-  }
+  //   //Just have to think about what to do at this point - perhaps delete the local db, log the user out (because the database booking is created when logging in so causes a lot of problems with the deletion), and navigate to the home page?
+  //   // createBookingMutate(booking, {
+  //   //   onSuccess: () => {
+  //       // logout(false, {
+  //       //   onSuccess: () => {
+  //       //     deleteDatabase(iDB.name).then(() =>
+  //       //       navigate('../', { replace: true })
+  //       //     );
+  //       //   },
+  //       // });
+  //     },
+  //   });
+  // }
 
   return (
     <SlideInY>
@@ -159,7 +115,7 @@ function BookingPayment() {
         </CabinSketchHeading>
         <DetailsSection>
           <Checkout productName={cabin.name} amount={totalPrice} />
-          <ButtonGroup>
+          {/* <ButtonGroup>
             <Button
               onPointerDown={() => navigate(-1)}
               disabled={isCreatingBooking}
@@ -169,7 +125,7 @@ function BookingPayment() {
             <Button onPointerDown={handleSubmit} disabled={isCreatingBooking}>
               Confirm Booking
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
         </DetailsSection>
       </Container>
     </SlideInY>
