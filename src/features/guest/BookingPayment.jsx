@@ -19,6 +19,7 @@ import { format } from 'date-fns';
 import { formatCurrency } from '../../utils/helpers';
 import ButtonGroup from '../../ui/ButtonGroup';
 import Button from '../../ui/Button';
+import Checkout from '../payment/Checkout';
 
 const Container = styled(GuestContainer)`
   grid-template-rows: auto 1fr auto;
@@ -63,11 +64,12 @@ const DetailsLabel = styled.span`
   min-width: fit-content;
 `;
 
-function BookingConfirmation() {
+function BookingPayment() {
   const { isCheckingUser, user, isAuthenticated, isAnonymous } = useUser();
   const { isLoading: isLoadingCabin, cabin } = useCabin();
-  const { isDBBusy, data, getCurrentData, updateCurrentData, deleteDatabase } =
-    useIndexedDB(iDB.name);
+  const { isDBBusy, data, getCurrentData, deleteDatabase } = useIndexedDB(
+    iDB.name
+  );
   const { createBookingMutate, isCreatingBooking } = useCreateBooking();
 
   const navigate = useNavigate();
@@ -132,11 +134,7 @@ function BookingConfirmation() {
 
     //Just have to think about what to do at this point - perhaps delete the local db, log the user out (because the database booking is created when logging in so causes a lot of problems with the deletion), and navigate to the home page?
     createBookingMutate(booking, {
-      onSuccess: (res) => {
-        updateCurrentData(iDB.store, { bookingId: res.id }).then(() =>
-          navigate(`../booking-payment/${cabin.id}`)
-        );
-        // navigate(`../booking-payment/${cabin.id}`);
+      onSuccess: () => {
         // logout(false, {
         //   onSuccess: () => {
         //     deleteDatabase(iDB.name).then(() =>
@@ -152,54 +150,15 @@ function BookingConfirmation() {
     <SlideInY>
       <GuestTitleArea>
         <CabinSketchHeading as="h1">
-          Let&#39;s get you booked in
+          Secure your booking, securely
         </CabinSketchHeading>
       </GuestTitleArea>
       <Container>
         <CabinSketchHeading as="h2">
-          Please check that all of the details of your stay are correct before
-          confirming
+          Be careful to only use the card number 4242 4242 4242 4242 for testing
         </CabinSketchHeading>
         <DetailsSection>
-          <DetailsRow>
-            <DetailsLabel>Your name: </DetailsLabel>
-            {fullName}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Cabin name: </DetailsLabel>
-            {cabin.name}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Number of guests: </DetailsLabel>
-            {numGuests}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Dates of booking: </DetailsLabel>
-            {format(startDate, 'EEEE do MMMM yyyy') + ' '}to
-            {' ' + format(endDate, 'EEEE do MMMM yyyy')}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Number of nights: </DetailsLabel>
-            {numNights}
-          </DetailsRow>
-          {observations && (
-            <DetailsRow>
-              <DetailsLabel>Additional notes: </DetailsLabel>
-              {observations}
-            </DetailsRow>
-          )}
-          <DetailsRow>
-            <DetailsLabel>Cabin price: </DetailsLabel>
-            {formatCurrency(cabinPrice)}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Cost of breakfasts: </DetailsLabel>
-            {hasBreakfast ? formatCurrency(extrasPrice) : 'n/a'}
-          </DetailsRow>
-          <DetailsRow>
-            <DetailsLabel>Total to pay: </DetailsLabel>
-            {formatCurrency(totalPrice)}
-          </DetailsRow>
+          <Checkout productName={cabin.name} amount={totalPrice} />
           <ButtonGroup>
             <Button
               onPointerDown={() => navigate(-1)}
@@ -217,4 +176,4 @@ function BookingConfirmation() {
   );
 }
 
-export default BookingConfirmation;
+export default BookingPayment;

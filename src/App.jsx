@@ -14,14 +14,16 @@ import GlobalStyles from './styles/GlobalStyles';
 import GuestLayout from './ui/GuestLayout';
 import SpinnerFullPage from './ui/SpinnerFullPage';
 import Welcome from './pages/Welcome';
+// import Payment from './pages/Payment';
 //Lazy load as much as possible to make performance better
 //Frontend (public) components
 const CreateGuest = lazy(() => import('./pages/CreateGuest'));
 const ConfirmBooking = lazy(() => import('./pages/ConfirmBooking'));
 const CabinDetails = lazy(() => import('./pages/CabinDetails'));
 const CompleteBooking = lazy(() => import('./pages/CompleteBooking'));
-const ProtectedRoute = lazy(() => import('./ui/ProtectedRoute'));
+const Payment = lazy(() => import('./pages/Payment'));
 //Backend components
+const ProtectedRoute = lazy(() => import('./ui/ProtectedRoute'));
 const AppLayout = lazy(() => import('./ui/AppLayout'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Account = lazy(() => import('./pages/Account'));
@@ -82,6 +84,10 @@ function App() {
                   <Route
                     path="confirm-booking/:cabinId"
                     element={<ConfirmBooking />}
+                  />
+                  <Route
+                    path="booking-payment/:cabinId"
+                    element={<Payment />}
                   />
                   {/* <Route path="dbtest" element={<DBTest />} />
                   <Route path="dbtest2" element={<DBTest2 />} /> */}
