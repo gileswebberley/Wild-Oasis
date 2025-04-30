@@ -8,8 +8,8 @@ export function useCreateBooking() {
   const { mutate: createBookingMutate, isLoading: isCreatingBooking } =
     useMutation({
       mutationFn: createBooking,
-      onSuccess: () => {
-        // console.table(data);
+      onSuccess: (data) => {
+        console.table(data);
         toast.success(`Booking has been successfully created`);
         queryClient.invalidateQueries({ queryKey: ['bookings'] });
       },

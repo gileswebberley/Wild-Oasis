@@ -36,6 +36,7 @@ function GuestForm() {
     isDBBusy,
     errors: iDBErrors,
     createCurrentObject,
+    deleteDatabase,
   } = useIndexedDB(iDB.name, [{ name: iDB.store }]);
 
   const navigate = useNavigate();
@@ -80,7 +81,13 @@ function GuestForm() {
   }
 
   if (isDBBusy) return <Spinner />;
-  if (iDBErrors) return <div>ERROR: {iDBErrors}</div>;
+  if (iDBErrors) {
+    toast.error(`Unfortunately something has gone wrong with our booking system: ${iDBErrors}
+      We're going to send you back to the homepage from where you can try again by clicking [Start Your Booking]`);
+    deleteDatabase(iDB.name).then(() => navigate('../', { replace: true }));
+    return null;
+  }
+  //  return <div>ERROR: {iDBErrors}</div>;
 
   return (
     <SlideInY>

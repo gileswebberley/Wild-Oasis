@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.6.0",
+    "@stripe/stripe-js": "^7.2.0",
     "@supabase/supabase-js": "^2.48.0",
     "@tanstack/react-query": "^4.36.1",
     "@tanstack/react-query-devtools": "^4.36.1",
     "date-fns": "^4.1.0",
+    "express": "^5.1.0",
     "react": "^18.2.0",
     "react-datepicker": "^8.2.1",
     "react-dom": "^18.2.0",
@@ -24,6 +27,8 @@
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^6.28.2",
     "recharts": "^2.15.1",
+    "serverless-http": "^3.2.0",
+    "stripe": "^18.0.0",
     "styled-components": "^6.1.14",
     "uuid": "^11.1.0"
   },
@@ -37,6 +42,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "netlify-cli": "^20.1.1",
     "vite": "^4.4.5",
     "vite-plugin-eslint": "^1.8.1"
   }

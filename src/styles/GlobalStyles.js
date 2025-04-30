@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     */
   /* New green branding - for dark and light modes */
   --color-brand-50:rgb(236, 245, 238);
-  --color-brand-100:rgb(200, 216, 203);
+  --color-brand-100:#c8d8cb;
   --color-brand-200:rgb(182, 220, 189);
   --color-brand-500:rgb(131, 161, 136);
   --color-brand-600:rgb(100, 143, 108);

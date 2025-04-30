@@ -3,7 +3,6 @@ import UserAvatar from '../features/authentication/UserAvatar';
 import DarkModeToggle from './DarkModeToggle';
 import { useUser } from '../features/authentication/useUser';
 import LogoSmall from './LogoSmall';
-import GuestLogin from '../features/guest/GuestLogin';
 import Login from '../features/authentication/Login';
 import Logout from '../features/authentication/Logout';
 import UserHome from '../features/authentication/UserHome';
@@ -54,7 +53,7 @@ const HeaderNavSection = styled.div`
 
 const HeaderTagline = styled.span`
   color: var(--color-brown);
-  transform: rotate(-0.5deg) translateY(2.5rem); // translateX(-1rem);
+  transform: rotate(-0.5deg) translateY(3.5rem); // translateX(-1rem);
   @media (${bp_sizes.lg}) {
     display: none;
   }
@@ -67,7 +66,7 @@ function GuestHeader() {
     <StyledHeader $dark={isDarkMode}>
       <LogoSmall />
       <HeaderTagline>
-        <CabinSketchHeading style={{ color: 'var(--color-brown)' }} as="h1">
+        <CabinSketchHeading style={{ color: 'var(--color-brown)' }} as="h3">
           &#xFF02;Not All Who Wander Are Lost&#xFF02;
         </CabinSketchHeading>
       </HeaderTagline>
