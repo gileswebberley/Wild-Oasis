@@ -33,6 +33,6 @@ export default async function handler(req, context) {
 }
 
 //This sets the path that you use in your fetch request - see the Checkout for an example
-export const config = {
-  path: '/api/stripe/:cabinName/:amount',
-};
+// export const config = {
+//   path: '/api/stripe/:cabinName/:amount',
+// };
