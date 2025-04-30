@@ -153,7 +153,7 @@ export async function createBooking(booking) {
     .select()
     .single();
   //I'm not sure why adding select() to this call produces an error considering it is advised in the api guide? Having tried a few different techniques to no avail I will have to leave it for now and simply return true I think :(
-  //came back to this as I need the booking id when I integrate payment (so I can change the isPaid value) and it was due to RLS policy. I created a new policy that checks the guestId in the user_metadata and compares it to the guestID foreign key column of the booking - it's not the safest but it has worked for now. The policy has the following as the 'using' statment - ((( SELECT ((auth.jwt() -> 'user_metadata'::text) -> 'guestId'::text)))::bigint = "guestID")
+  //came back to this as I need the booking id when I integrate payment (so I can change the isPaid value) and it was due to RLS policy. I created a new policy that checks the guestId in the user_metadata and compares it to the guestID foreign key column of the booking - it's not the safest but it has worked for now. The policy has the following as the 'using' statment - ((( SELECT ((auth.jwt() -> 'user_metadata'::text) -> 'guestId'::text)))::bigint = "guestID") - Stopped working the following day!! :(
 
   if (error) {
     console.error(error);

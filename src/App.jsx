@@ -14,6 +14,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import GuestLayout from './ui/GuestLayout';
 import SpinnerFullPage from './ui/SpinnerFullPage';
 import Welcome from './pages/Welcome';
+import Success from './pages/Success';
 // import Payment from './pages/Payment';
 //Lazy load as much as possible to make performance better
 //Frontend (public) components
@@ -88,6 +89,10 @@ function App() {
                   <Route
                     path="booking-payment/:cabinId"
                     element={<Payment />}
+                  />
+                  <Route
+                    path="successful-payment/:sessionId"
+                    element={<Success />}
                   />
                   {/* <Route path="dbtest" element={<DBTest />} />
                   <Route path="dbtest2" element={<DBTest2 />} /> */}

@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const currentHostUrl = 'http://localhost:8888';
 
 export default async function handler(req, context) {
   const { cabinName, amount } = context.params;
@@ -18,8 +19,7 @@ export default async function handler(req, context) {
     ],
     mode: 'payment',
     ui_mode: 'embedded',
-    return_url:
-      'http://localhost:8888/payment/return?session_id={CHECKOUT_SESSION_ID}',
+    return_url: `${currentHostUrl}/successful-payment/{CHECKOUT_SESSION_ID}`,
   });
   const res_body = JSON.stringify({
     session_id: session.id,

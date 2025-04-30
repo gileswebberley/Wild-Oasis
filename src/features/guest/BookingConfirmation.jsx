@@ -136,14 +136,6 @@ function BookingConfirmation() {
         updateCurrentData(iDB.store, { bookingId: res.id }).then(() =>
           navigate(`../booking-payment/${cabin.id}`)
         );
-        // navigate(`../booking-payment/${cabin.id}`);
-        // logout(false, {
-        //   onSuccess: () => {
-        //     deleteDatabase(iDB.name).then(() =>
-        //       navigate('../', { replace: true })
-        //     );
-        //   },
-        // });
       },
     });
   }

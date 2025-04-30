@@ -86,7 +86,7 @@ function BookingForm() {
 
   //Derived api busy constants
   const isUpdatingGuest = isGuestBusy || isDBBusy;
-  const isLoadingData = isCheckingUser || isLoading || isLoadingCabin;
+  const isLoadingData = isCheckingUser || isLoading || isLoadingCabin || !data;
   if (isLoadingData) return <Spinner />;
 
   //No point working these out if we're still loading the data but if we've got here then we have finished loading, although just to avoid single render problems we safely null-coalesce these destructuring statements
