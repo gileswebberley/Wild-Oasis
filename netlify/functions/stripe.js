@@ -1,4 +1,6 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+// const stripe = require('stripe')(process.env.STRIPE_SECRET);
+import Stripe from 'stripe';
+const stripe = new Stripe(process.env.STRIPE_SECRET);
 // const currentHostUrl = 'http://localhost:8888';//dev with netlify cli
 const currentHostUrl = 'https://wild-oasis-demo.netlify.app';
 
