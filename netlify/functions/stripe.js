@@ -27,13 +27,6 @@ export default async function handler(req, context) {
   });
   const res_options = { status: 200 };
   return new Response(res_body, res_options);
-  //  {
-  //   statusCode: 200,
-  //   body: JSON.stringify({
-  //     session_id: session.id,
-  //     clientSecret: session.client_secret,
-  //   }),
-  // };
 }
 
 export const config = {
