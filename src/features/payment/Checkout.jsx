@@ -21,7 +21,9 @@ function Checkout({ productName, amount }) {
 
   return (
     <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+      {/* <GuestContainer> */}
       <EmbeddedCheckout />
+      {/* </GuestContainer> */}
     </EmbeddedCheckoutProvider>
   );
 }

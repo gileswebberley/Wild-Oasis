@@ -115,17 +115,16 @@ function BookingPayment() {
         </CabinSketchHeading>
         <DetailsSection>
           <Checkout productName={cabin.name} amount={totalPrice} />
-          {/* <ButtonGroup>
+          <ButtonGroup>
             <Button
-              onPointerDown={() => navigate(-1)}
-              disabled={isCreatingBooking}
+              onPointerDown={() => navigate(`../confirm-booking/${cabin.id}`)}
             >
               Back
             </Button>
-            <Button onPointerDown={handleSubmit} disabled={isCreatingBooking}>
+            {/*  <Button onPointerDown={handleSubmit} disabled={isCreatingBooking}>
               Confirm Booking
-            </Button>
-          </ButtonGroup> */}
+            </Button>*/}
+          </ButtonGroup>
         </DetailsSection>
       </Container>
     </SlideInY>

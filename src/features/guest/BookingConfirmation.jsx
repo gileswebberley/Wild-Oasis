@@ -208,7 +208,7 @@ function BookingConfirmation() {
               Back
             </Button>
             <Button onPointerDown={handleSubmit} disabled={isCreatingBooking}>
-              Confirm Booking
+              Checkout
             </Button>
           </ButtonGroup>
         </DetailsSection>
