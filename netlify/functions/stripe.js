@@ -1,5 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
-const currentHostUrl = 'http://localhost:8888';
+// const currentHostUrl = 'http://localhost:8888';//dev with netlify cli
+const currentHostUrl = 'https://wild-oasis-demo.netlify.app';
 
 export default async function handler(req, context) {
   const { cabinName, amount } = context.params;
@@ -29,6 +30,7 @@ export default async function handler(req, context) {
   return new Response(res_body, res_options);
 }
 
+//This sets the path that you use in your fetch request - see the Checkout for an example
 export const config = {
   path: '/api/stripe/:cabinName/:amount',
 };

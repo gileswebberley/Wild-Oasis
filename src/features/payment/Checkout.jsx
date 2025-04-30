@@ -4,7 +4,6 @@ import {
   EmbeddedCheckout,
 } from '@stripe/react-stripe-js';
 import { useCallback } from 'react';
-import GuestContainer from '../../ui/GuestContainer';
 
 const stripePromise = loadStripe(
   'pk_test_51RIruECRNgWRRJ4LR7JqZMXKf4YtFcieHSO3BQKCnDQ9mu6EokvKd0MKO2hZ7KQg4lH9w1dIVRsbiOG78DCc8DGn007n5NmPTj'
