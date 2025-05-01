@@ -80,6 +80,7 @@ function Success() {
   //Finally we'll call the server with our session_id that should be in the url (from the return_url of our stripe function)
   useEffect(() => {
     const sessionId = searchParams.get('session_id');
+    console.log(`session id from searchParams: ${sessionId}`);
 
     fetch(`../api/stripe-status?session_id=${sessionId}`)
       .then((res) => res.json())
@@ -126,10 +127,10 @@ function Success() {
           That's it for now, I am learning still and so will update this page
           and the process further over the coming days/weeks. If you'd like to
           delete the booking data that we've stored on your system and log out
-          then please click the link below. <br />I would really love to get
-          some real world experience, as I haven't been involved in web
-          development since the early noughties, so if you can help me out
-          please do pop me an email at{' '}
+          then please click the link below. <br />
+          <br />I would really love to get some real world experience, as I
+          haven't been involved in web development since the early noughties, so
+          if you can help me out please do pop me an email at{' '}
           <a
             href={`mailto:${noHarvestEmail}?subject=${noHarvestSubject}`}
             target="_blank"

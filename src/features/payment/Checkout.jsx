@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
 
 function Checkout({ productName, amount }) {
   const fetchClientSecret = useCallback(() => {
-    return fetch(`../api/stripe/`, {
+    return fetch(`../api/stripe`, {
       method: 'POST',
       body: JSON.stringify({ product: productName, cost: amount }),
     })

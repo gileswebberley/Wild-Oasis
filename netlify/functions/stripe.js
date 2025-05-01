@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET);
-// const currentHostUrl = 'http://localhost:8888';//dev with netlify cli
+// const currentHostUrl = 'http://localhost:8888'; //dev with netlify cli
 const currentHostUrl = 'https://wild-oasis-demo.netlify.app';
 
 //Note that for Netlify it does not matter what you name your functions as long as they follow the export default async function pattern

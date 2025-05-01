@@ -2,7 +2,12 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 export default async function status(req, res) {
-  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+  // Get the URL from the request - Netlify AI assistant suggestion
+  const url = new URL(req.url);
+  // Access the session_id query parameter
+  const sessionId = url.searchParams.get('session_id');
+  //   console.log(`Stripe status called with req.query: ${sessionId}`);
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
 
   const res_body = JSON.stringify({
     status: session.status,
