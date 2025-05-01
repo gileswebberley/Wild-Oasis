@@ -90,10 +90,7 @@ function App() {
                     path="booking-payment/:cabinId"
                     element={<Payment />}
                   />
-                  <Route
-                    path="successful-payment/:sessionId"
-                    element={<Success />}
-                  />
+                  <Route path="successful-payment" element={<Success />} />
                   {/* <Route path="dbtest" element={<DBTest />} />
                   <Route path="dbtest2" element={<DBTest2 />} /> */}
                 </Route>

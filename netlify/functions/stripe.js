@@ -1,9 +1,9 @@
-// const stripe = require('stripe')(process.env.STRIPE_SECRET);
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET);
 // const currentHostUrl = 'http://localhost:8888';//dev with netlify cli
 const currentHostUrl = 'https://wild-oasis-demo.netlify.app';
 
+//Note that for Netlify it does not matter what you name your functions as long as they follow the export default async function pattern
 export default async function handler(req, context) {
   const reqBody = await req.json();
   // console.log(`request body - ${JSON.stringify(reqBody)}`);
@@ -24,7 +24,7 @@ export default async function handler(req, context) {
     ],
     mode: 'payment',
     ui_mode: 'embedded',
-    return_url: `${currentHostUrl}/successful-payment/{CHECKOUT_SESSION_ID}`,
+    return_url: `${currentHostUrl}/successful-payment?session_id={CHECKOUT_SESSION_ID}`,
   });
   const res_body = JSON.stringify({
     session_id: session.id,
