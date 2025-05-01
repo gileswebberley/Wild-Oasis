@@ -5,17 +5,19 @@ const stripe = new Stripe(process.env.STRIPE_SECRET);
 const currentHostUrl = 'https://wild-oasis-demo.netlify.app';
 
 export default async function handler(req, context) {
-  const { cabinName, amount } = context.params;
-  console.log(`cabinName from stripe - ${cabinName}`);
+  const reqBody = await req.json();
+  // console.log(`request body - ${JSON.stringify(reqBody)}`);
+  const { product, cost } = reqBody;
+  console.log(`cabinName from stripe - ${product}`);
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
         price_data: {
           currency: 'gbp',
           product_data: {
-            name: 'Your stay at our cabin called ' + decodeURI(cabinName),
+            name: 'Your stay at our cabin called ' + decodeURI(product),
           },
-          unit_amount: Math.floor(amount * 100),
+          unit_amount: Math.floor(cost * 100),
         },
         quantity: 1,
       },
@@ -33,6 +35,6 @@ export default async function handler(req, context) {
 }
 
 //This sets the path that you use in your fetch request - see the Checkout for an example
-// export const config = {
-//   path: '/api/stripe/:cabinName/:amount',
-// };
+export const config = {
+  path: '/api/stripe',
+};
