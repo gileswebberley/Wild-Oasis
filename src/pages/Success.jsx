@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useBookingPaid } from '../features/payment/useBookingPaid';
 import Spinner from '../ui/Spinner';
 import { format } from 'date-fns';
+import GuestSubContainer from '../ui/GuestSubContainer';
 
 const noHarvestEmail = 'gileswebberley@gmail.com';
 const noHarvestSubject = encodeURI('Message from the Wild Oasis Demo site');
@@ -120,34 +121,36 @@ function Success() {
     <SlideInY>
       <GuestContainer>
         <CabinSketchHeading as="h1">
-          Thank you {fullName} for your booking, we'll see you here on{' '}
+          Thank you {fullName} for your booking, we'll see you here on
           {' ' + format(startDate, 'EEEE do MMMM yyyy')}!
         </CabinSketchHeading>
-        <CabinSketchHeading as="h4">
-          That's it for now, I am learning still and so will update this page
-          and the process further over the coming days/weeks. If you'd like to
-          delete the booking data that we've stored on your system and log out
-          then please click the link below. <br />
-          <br />I would really love to get some real world experience, as I
-          haven't been involved in web development since the early noughties, so
-          if you can help me out please do pop me an email at{' '}
-          <a
-            href={`mailto:${noHarvestEmail}?subject=${noHarvestSubject}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {noHarvestEmail}
-          </a>
-          <span title="Click to copy my email address to your clipboard">
-            <HiClipboardCopy onPointerDown={copyToClipboard} /> I would really
-          </span>
-          appreciate it.
-          <br />
-          T'ta for now.
-        </CabinSketchHeading>
-        <ButtonGroup>
-          <Button onClick={handleFinish}>Tidy Up</Button>
-        </ButtonGroup>
+        <GuestSubContainer>
+          <CabinSketchHeading as="h4">
+            That's it for now, I am learning still and so will update this page
+            and the process further over the coming days/weeks. If you'd like to
+            delete the booking data that we've stored on your system and log out
+            then please click the link below. <br />
+            <br />I would really love to get some real world experience, as I
+            haven't been involved in web development since the early noughties,
+            so if you can help me out please do pop me an email at{' '}
+            <a
+              href={`mailto:${noHarvestEmail}?subject=${noHarvestSubject}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {noHarvestEmail}
+            </a>
+            <span title="Click to copy my email address to your clipboard">
+              <HiClipboardCopy onPointerDown={copyToClipboard} /> I would really
+            </span>
+            appreciate it.
+            <br />
+            T'ta for now.
+          </CabinSketchHeading>
+          <ButtonGroup>
+            <Button onClick={handleFinish}>Tidy Up</Button>
+          </ButtonGroup>
+        </GuestSubContainer>
       </GuestContainer>
     </SlideInY>
   );

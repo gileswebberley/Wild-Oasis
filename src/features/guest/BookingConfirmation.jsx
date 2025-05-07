@@ -112,8 +112,8 @@ function BookingConfirmation() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    toast.success(`DEMO VERSION (Booking added to DB)
-        In production you would be sent an email and taken to a checkout page...`);
+    // toast.success(`DEMO VERSION (Booking added to DB)
+    //     In production you would be sent an email and taken to a checkout page...`);
     const booking = {
       startDate,
       endDate,

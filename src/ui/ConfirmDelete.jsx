@@ -27,14 +27,15 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, closeMe }) {
       <Heading as="h3">Delete {resourceName}</Heading>
       <p>
         Are you sure you want to delete this {resourceName} permanently? This
-        action cannot be undone.
+        action cannot be undone. For demo purposes this action is disabled,
+        please click cancel.
       </p>
 
       <div>
         <Button variation="secondary" disabled={disabled} onClick={closeMe}>
           Cancel
         </Button>
-        <Button variation="danger" disabled={disabled} onClick={onConfirm}>
+        <Button variation="danger" disabled={true} onClick={onConfirm}>
           Delete
         </Button>
       </div>

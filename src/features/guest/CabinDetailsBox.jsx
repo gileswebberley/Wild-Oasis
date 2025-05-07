@@ -102,6 +102,7 @@ function CabinDetailsBox({ cabin }) {
             <CabinImg
               src={cabin.imageUrl}
               loading="lazy"
+              decoding="async"
               alt={`Image of Cabin ${cabin.name}`}
             />
             <div>
